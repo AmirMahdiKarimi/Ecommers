@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet"/>
+    <!-- Custom StyleSheet -->
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+    
+    <title>Simple E-commerce website template design using HTML || CSS || Javascript</title>
+    {% block head %}{% endblock %}
+
+  </head>
+  <body>
+      <!-- Navigation  -->
+      <div class="navigation">
+        <div class="nav-center container d-flex">
+          <a href="{% url 'index' %}" class="logo" style="font-style: oblique;"><h3>E-Commerce</h3></a>
+          <ul class="nav-link d-flex">
+            <li class="nav-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="nav-item"><a href="{% url 'category' %}">Collections</a></li>            
+            <li class="nav-item"><a href="{% url 'contact' %}">Contact us</a></li>
+            <li class="nav-item"><a href="{% url 'about' %}">About</a></li>
+          </ul>
+
+
+          <!-- Right side icons for desktop  -->
+          <div class="icons d-flex">
+            <div class="hide-nav d-flex">
+              <a href="./pages/login.html" class="icon"><i class="bx bx-user"></i></a>
+                <div class="icon">
+                  <a href="./pages/wishlist.html"><i class="bx bx-heart"></i></a>
+                  <span class="d-flex">0</span>
+                </div>
+                <div class="icon">
+                  <a href="./pages/cart.html"><i class="bx bx-cart"></i></a>
+                  <span class="d-flex">0</span>
+                </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    {% block body %}{% endblock %}
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+  <script src="{% static 'js/index.js' %}"></script>  
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+</html>

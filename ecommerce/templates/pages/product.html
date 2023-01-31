@@ -1,307 +1,139 @@
-<!DOCTYPE html>
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block body %}
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i" rel="stylesheet">
+        
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/all.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}"/>
+</head>
+<body>
+<div class="container-fluid">
 
-    <!-- Boxicons -->
-    <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <!-- Custom StyleSheet -->
-    <link rel="stylesheet" href="../css/style.css"/>
-    <title>Simple E-commerce website template design using HTML || CSS || Javascript</title>
-    <style>
-      .header{
-        min-height: 0;
-      }
-      .nav-center .nav-link a {
-        color: #222;
-      }
-      .navigation .nav-center .logo{
-        color: #222;
-      }
-      .cross-icon {
-        color: #222;
-      }
-      .icon a {
-        color: #222;
-      }
-      .icon {
-        color: #222;
-      }
-      .hamburger {
-        color: #222;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header  -->
-    <header class="header" id="header">
-      <!-- top nav  -->
-      <div class="top-nav">
-        <div class="container d-flex">
-          <p>Help or Customer support call us (001) 2321 6321</p>
-          <ul class="d-flex">
-            <li><a href="">About</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">Faq</a></li>
-          </ul>
-        </div>
-      </div>
+    <div class="row min-vh-100">
+        <div class="row min-vh-100">
+        <div class="col-12">
+            <!-- Main Content -->
+            <main class="row">
+                <div class="col-12 bg-white py-3 my-3" >
+                    <div class="row">
+                        <!-- Product Images -->
+                        <div class="col-lg-4 col-md-12 mb-3">
+                            <div class="col-12 mb-3">
+                                <div class="img-large border" style="background-image: url('{{ product.main_image.image.url }}'); "></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row">
+                                    {% for img in product.images %}
+                                    <div class="col-sm-2 col-3">
+                                        <div class="img-small border" style="background-image: url('{{ img.image.url }}')" data-src="{{ img.image.url }}"></div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Images -->
+                        <!-- Product Info -->
+                        <div class="col-lg-5 col-md-9">
+                            <div class="col-12 product-name large">
+                                <h2>{{ product.name }}</h2>
+                            </div>
+                            <div class="col-12 px-0">
+                                <hr>
+                            </div>
+                            <div class="col-12">
+                                <ul>
+                                    <li>{{ product.desc }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Product Info -->
 
-      <!-- Navigation  -->
-      <div class="navigation">
-        <div class="nav-center container d-flex">
-          <a href="index.html" class="logo"><h2>E-COM</h2></a>
-          <ul class="nav-link d-flex">
-            <li class="nav-item"><a href="../index.html">Home</a></li>
-            <li class="nav-item"><a href="./collection.html">Collections</a></li>            
-            <li class="nav-item"><a href="./shop.html">Shop</a></li>
-            <li class="nav-item"><a href="./about.html">Our Brand</a></li>
-            <li class="nav-item"><a href="./contact.html">Pages</a></li>
+                        <!-- Sidebar -->
+                        <div class="col-lg-2 col-md-3 text-center">
+                            <div class="col-12 sidebar h-100">
+                                <div class="row">
+                                    <div class="col-12">
+                                    <span class="detail-price">
+                                        {{ product.price }}
+                                    </span>
+                                    </div>
+                                    <div class="col-xl-5 col-md-9 col-sm-3 col-5 mx-auto mt-3">
+                                        <div class="mb-3">
+                                            <label for="qty">Quantity</label>
+                                            <input type="number" id="qty" min="1" max="{{ product.remaining_count }}" value="1" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button class="btn btn-outline-dark" type="button"><i class="fas fa-cart-plus me-2"></i>Add to cart</button>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button class="btn btn-outline-secondary btn-sm" type="button"><i class="fas fa-heart me-2"></i>Add to wishlist</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sidebar -->
 
-            <!-- Mobile icons  -->
-
-            <div class="cross-icon">
-              <i class='bx bx-x'></i>
-            </div>
-            <li class="icons d-flex">
-              <a href="./pages/login.html" class="icon"><i class="bx bx-user"></i></a>
-              <div class="icon">
-                  <a href="javascript:void(0)"><i class="bx bx-search"></i></a>
+                    </div>
                 </div>
-                <div class="icon">
-                  <a href="./pages/wishlist.html"><i class="bx bx-heart"></i></a>
-                  <span class="d-flex">0</span>
+
+                <!-- Similar Product -->
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 py-3">
+                            <hr>
+                            <div class="row">
+                                <div class="col-12 text-center text-uppercase">
+                                    <h2>Similar Products</h2>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row">
+                            {% for similar in similars %}
+                                <div class="product" style="width:22%;">
+                                    <a href="{{ similar.get_absolute_url }}" class="product-thum">
+                                        <div class="product-overlay">
+                                          <img src="{{similar.main_image.image.url}}" alt="">
+                                        </div>
+                                    </a>
+                                    <div class="product-info">
+                                      <span>{{similar.category}}</span>
+                                      <a href="{{ similar.get_absolute_url }}">
+                                        {{similar.name}}
+                                      </a>
+                                      <h4>${{similar.price}}</h4>
+                                    </div>
+
+                                  </div>
+                            {% endfor %}     
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon">
-                  <a href="./pages/cart.html"><i class="bx bx-cart"></i></a>
-                  <span class="d-flex">0</span>
-                </div>
-            </li>
-          </ul>
+                <!-- Similar Products -->
 
+            </main>
+            <!-- Main Content -->
+        </div>
 
-          <!-- Right side icons for desktop  -->
-          <div class="icons d-flex">
-            <div class="hide-nav d-flex">
-              <a href="./pages/login.html" class="icon"><i class="bx bx-user"></i></a>
-              <div class="icon">
-                  <a href="javascript:void(0)"><i class="bx bx-search"></i></a>
-                </div>
-                <div class="icon">
-                  <a href="./pages/wishlist.html"><i class="bx bx-heart"></i></a>
-                  <span class="d-flex">0</span>
-                </div>
-                <div class="icon">
-                  <a href="./pages/cart.html"><i class="bx bx-cart"></i></a>
-                  <span class="d-flex">0</span>
-                </div>
-            </div>
-              <!-- Humbarger -->
+    </div>
 
-              <div class="hamburger">
-                <!-- <i class="bx bx-menu-alt-left"></i> -->
-                <i class='bx bx-menu'></i>
-              </div>
-          </div>
-        </div>
-      </div>
-    </header>
+</div>
 
-    <!-- New arivals products section  -->
-    <section class="section new-arrival">
-      <div class="title">
-        <h1>New arrivals</h1>
-        <p>Lasted high quality product on cheap price get your now</p>
-      </div>
-      
-      <!-- products part -->
-
-      <div class="products-container">
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-              <img src="../images/product-3.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>Men's cloths</span>
-            <a href="./pages/product.html">
-              stylist t-shirt for men's
-            </a>
-            <h4>$29.99</h4>
-          </div>
-
-          <span class="discount">40%</span>
-
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-2.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>Men's cloths</span>
-            <a href="./pages/product.html">
-              winter hodies for men's
-            </a>
-            <h4>$31.90</h4>
-          </div>
-          <span class="discount">30%</span>
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-4.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>Women's cloths</span>
-            <a href="./pages/product.html">
-              warmfull hodies for womem's
-            </a>
-            <h4>$49.99</h4>
-          </div>
-
-          <!-- hover icons  -->
-
-          <ul class="icons">
-            <li> <i class="bx bx-heart"></i></li>
-            <li> <i class="bx bx-search"></i></li>
-            <li> <i class="bx bx-cart"></i></li>
-          </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-1.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>travel bag</span>
-            <a href="./pages/product.html">
-              tranding travels bag for travelers
-            </a>
-            <h4>$28.50</h4>
-          </div>
-          <span class="discount">20%</span>
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-6.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>Men's cloths</span>
-            <a href="./pages/product.html">
-              custom name hodies for men's
-            </a>
-            <h4>$21.99</h4>
-          </div>
-          <span class="discount">15%</span>
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-5.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>both cloths</span>
-            <a href="./pages/product.html">
-              beautifull t-shirts for both
-            </a>
-            <h4>$79.99</h4>
-          </div>
-          <span class="discount">50%</span>
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-8.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>Men's cloths</span>
-            <a href="./pages/product.html">
-              viral t-shirt for men's
-            </a>
-            <h4>$39.99</h4>
-          </div>
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-        <div class="product">
-          <div class="product-overlay">
-            <a href="./pages/product.html" class="product-thum">
-                <img src="../images/product-4.jpg" alt="">
-            </a>
-          </div>
-          <div class="product-info">
-            <span>womem's cloths</span>
-            <a href="./pages/product.html">
-              Print on demand t-shirt
-            </a>
-            <h4>$19.19</h4>
-          </div>
-          <span class="discount">10%</span>
-            <!-- hover icons  -->
-          
-            <ul class="icons">
-              <li> <i class="bx bx-heart"></i></li>
-              <li> <i class="bx bx-search"></i></li>
-              <li> <i class="bx bx-cart"></i></li>
-            </ul>
-        </div>
-      </div>
-    </section>
-    
-  </body>
-  <script src="../js/index.js"></script>
+</body>
 </html>
+
+{% endblock %}

@@ -2,12 +2,17 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 
+
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, allow_unicode=True, auto_created=slugify(name))
+    slug = models.SlugField(unique=True, editable=False)
     image = models.ImageField(upload_to='Categories', default='default/default.png')
     created_at = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Category, self).save(*args, **kwargs) 
     
     def get_absolute_url(self):
         return reverse("selected-category", args=[self.slug])
@@ -18,7 +23,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
-    slug = models.SlugField(null=True, unique=True, allow_unicode=True, auto_created=slugify(name))
+    slug = models.SlugField(unique=True, editable=False)
     desc = models.TextField(null=True)
     price = models.DecimalField(decimal_places=2, max_digits=6)
     remaining_count = models.IntegerField()
@@ -27,6 +32,9 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     last_update = models.DateTimeField(auto_now=True)
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("product-detail", args=[self.slug])

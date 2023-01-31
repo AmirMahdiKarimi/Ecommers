@@ -6,5 +6,4 @@ class ProductConfig(AppConfig):
     name = 'product'
 
     def ready(self) -> None:
-        import product.signals
         return super().ready()
