@@ -1,0 +1,41 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block body %}
+<header class="header" id="header" style="background-image: url('{% static "images/header-bg.jpg" %}'); min-height: 550px; max-height: 450px; background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; background-color: green;">
+    <div class="about-content">
+      <div>
+          <div height="10px">
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <h1 class="color" style="font-family:Rosehot">Wellcome to my website</h1>
+            
+            <br>
+            <br>
+            <br>
+            <a href="{% url 'category' %}" class="hero-btn" style="margin:10px">SHOP NOW</a>
+            <br>
+            <br>
+            <br><br>
+            <a href="#" class="hero-btn" style="margin:10px">Login</a>
+
+          </div>
+      </div>
+    </div>
+  </header>
+  <!-- Top promotion seciton  --> 
+
+  <!-- Collection top part  -->
+  <section class="section new-arrival">
+    <div class="top-text">
+      <div class="left-text">
+      </div>
+    </div>
+    
+    <!-- collection list -->
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}"/>
+  </section>
+{% endblock %}

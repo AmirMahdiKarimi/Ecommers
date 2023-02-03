@@ -1,0 +1,45 @@
+.contact-box-wrapper {
+    top: -60px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-box {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 32px 40px;
+    margin: 0 5%;
+    background-color: #fff;
+    border: 1px solid #eaf0f6;
+}
+.contact-box-item.logo {
+    height: 50px;
+    width: 50px;
+}
+.contact-box-item {
+    max-width: 100%;
+    margin-bottom: 24px;
+}
+
+.contact-box-item.title {
+    font-weight: 600;
+    color: #2e475d;
+}
+
+.contact-box-item.blurb {
+    color: #2e475d;
+}
+
+.contact-box-item.desktop{
+    display:none
+}
+@media (min-width: 768px){
+    .contact-box-item.desktop
+    {
+        display:block
+    }
+}

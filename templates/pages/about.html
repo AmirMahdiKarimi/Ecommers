@@ -1,0 +1,23 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block body %}
+    <body class="about" style="min-height: 1000px;">
+        <div class="about-content">
+            <br>
+            <img class="shahed-logo" src='{% static "images/shahed_logo.svg.png" %}' alt="Shahed logo">
+            <br>
+            <br>
+            <p>"<span style="color: aqua; font-style: oblique;">AmirMahdi Karimi</span> E-commerce website"</p>
+            <br>
+            <p>This website implemented for my bachelor project.</p>
+            <br>
+            <h4>- Developed with Django</h4>
+            <br>
+            <br>
+            <p><a href="https://www.linkedin.com/in/amirmahdikarimi/" class="about-links">My Linkedin</a></p>
+            <br>
+            <p><a href="https://github.com/AmirMahdiKarimi" class="about-links">My github</a></p>
+        </div>
+    </body>
+{% endblock %}

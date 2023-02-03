@@ -1,0 +1,52 @@
+{% extends "navbar.html" %}
+{% load static %}
+{% block body %}
+    <header class="header" id="header" style="background-image: url('{% static "images/main-page.jpg" %}'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+
+      <!-- hero area  -->
+      <div class="hero">
+        <div class="hero-container container">
+          <div class="left">
+            <div>
+              <span>- New Amazing Laptops</span>
+              <br>  
+              <br>  
+              <h1>Gaming Beast</h1>
+              <br>  
+              <p>Be Update With Us</p>
+              <br>
+              <a href="{% url 'category' %}" class="hero-btn">SHOP NOW</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- New arivals products section  -->
+    <section class="section new-arrival">
+        <div class="title">
+          <h1>New products</h1>
+          <p></p>
+        </div>
+        
+        <!-- products part -->
+        <div class="products-container">
+          {% for product in products %}
+          <div class="product">
+            <a href="{{ product.get_absolute_url }}" class="product-thum">
+                <div class="product-overlay">
+                <img src="{{product.main_image.image.url}}" alt="">
+              </div>
+            </a>
+            <div class="product-info">
+              <span>{{product.category}}</span>
+              <a href="{{ product.get_absolute_url }}">
+                {{product.name}}
+              </a>
+              <h4>${{product.price}}</h4>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+    </section>
+{% endblock %}

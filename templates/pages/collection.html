@@ -1,0 +1,44 @@
+{% extends "navbar.html" %}
+{% load static %}
+
+{% block body %}
+  <header class="header" id="header" style="background-image: url('{% static "images/collection-top.jpg" %}'); background-repeat: no-repeat; background-size: cover; background-position: center; background-attachment: fixed; background-color: green;">
+    <div class="hero-container container" style="height: 50vh;">
+      <div class="left">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>-Be- </h1><h1 class="color">shiny</h1><h1>-with us-</h1>
+        <br>
+        <p>Honor is the bests choose us :)</p>
+      </div>
+    </div>
+  </header>
+  <!-- Top promotion seciton  --> 
+
+  <!-- Collection top part  -->
+  <section class="section new-arrival">
+    <div class="top-text">
+      <div class="left-text">
+        <h4>All Collections</h4>
+      </div>
+    </div>
+    
+    <!-- collection list -->
+    <div >
+      <div class="collections container">
+        {% for category in categories %}
+          <div class="collection">
+            <img class="scale" src="{{ category.image.url }}" alt="">
+              <a href="{{ category.get_absolute_url }}">
+                <div class="collection-info">
+                  <h1 class="after">{{ category.name }}</h1>
+                </div>
+              </a>
+          </div>            
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
